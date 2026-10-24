@@ -22,7 +22,9 @@ RUN rpm-ostree install \
     open-vm-tools \
     open-vm-tools-desktop \
     pluma \
+    python3 \
     trojan \
+    uv \
     v2raya \
     vim \
     wget \
