@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  IMAGE_NAME: edwardwoodhub/my-bluefin-vm
+  IMAGE_NAME: edwardwoodhub/my-fedora-gnome-vm
 
 jobs:
   # ========================================================
@@ -83,17 +83,17 @@ jobs:
             ghcr.io/${{ env.IMAGE_NAME }}:latest
 
           ISO_PATH=$(find ./output -type f -name "*.iso" | head -n 1)
-          cp "$ISO_PATH" ./my-bluefin-live.iso
+          cp "$ISO_PATH" ./my-fedora-gnome-live.iso
 
       - name: Split ISO
         run: |
-          split -b 1500M my-bluefin-live.iso my-bluefin-live.iso.part-
+          split -b 1500M my-fedora-gnome-live.iso my-fedora-gnome-live.iso.part-
 
       - name: Publish ISO to GitHub Releases
         uses: softprops/action-gh-release@v2
         if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'workflow_dispatch'|| github.event_name == 'schedule'
         with:
-          files: my-bluefin-live.iso.part-*
+          files: my-fedora-gnome-live.iso.part-*
           tag_name: live-iso-${{ github.run_number }}
           name: "Live ISO Build ${{ github.run_number }}"
           generate_release_notes: true
@@ -102,7 +102,7 @@ jobs:
       - name: Clean ISO Build Artifacts
         run: |
           sudo rm -rf ./output
-          rm -f my-bluefin-live.iso*
+          rm -f my-fedora-gnome-live.iso*
 
       # ========================================================
       # 阶段 2：使用 bootc-image-builder 构建 QCOW2 并上传至 Artifacts
