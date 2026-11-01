@@ -31,7 +31,7 @@ RUN rpm-ostree install \
     && ostree container commit
 
 # 3. 启用系统服务（对应 systemd 模块）
-RUN systemctl enable v2raya.service vmtoolsd.service
+RUN systemctl enable sshd.service v2raya.service vmtoolsd.service
 
 # 4. 配置系统预装 Flatpak
 RUN mkdir -p /etc/flatpak/install.d \
