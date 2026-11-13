@@ -20,6 +20,7 @@ RUN rpm-ostree install \
     konsole \
     kwrite \
     meld \
+    mesa-dri-drivers \
     open-vm-tools \
     open-vm-tools-desktop \
     pluma \
