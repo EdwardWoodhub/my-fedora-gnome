@@ -7,6 +7,7 @@ RUN dnf -y copr enable zhullyb/v2rayA \
 # 2. 系统软件包分层安装（对应 rpm-ostree 模块）
 # rpm-ostree 环境下建议安装后清理元数据以减小体积
 RUN rpm-ostree install \
+    7zip \
     btop \
     fastfetch \
     flameshot \
